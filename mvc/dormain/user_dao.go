@@ -7,6 +7,12 @@ import (
 	"net/http"
 )
 
+type userDao struct{}
+
+type userDaoInterface interface {
+	GetUser(userId int64) (*User, *utils.AppError)
+}
+
 var (
 	users = map[int64]*User{
 		123: &User{123, "Raymond", "Gitonga", "raytosh95@gmail.com"},
@@ -18,12 +24,6 @@ var (
 func init() {
 	UserDao = &userDao{}
 }
-
-type userDaoInterface interface {
-	GetUser(userId int64) (*User, *utils.AppError)
-}
-
-type userDao struct{}
 
 func (u *userDao) GetUser(userId int64) (*User, *utils.AppError) {
 	log.Println("We are accessing the database")
