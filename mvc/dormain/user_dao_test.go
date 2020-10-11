@@ -10,7 +10,7 @@ func TestGetUserNoUserFound(t *testing.T) {
 	//Initialization
 
 	//Execution
-	user, err := GetUser(0)
+	user, err := UserDao.GetUser(0)
 
 	//validation
 	assert.Nil(t, user, "We were not expecting user with id 0")
@@ -20,7 +20,7 @@ func TestGetUserNoUserFound(t *testing.T) {
 }
 
 func TestGetUserAUserIsFound(t *testing.T) {
-	user, err := GetUser(123)
+	user, err := UserDao.GetUser(123)
 
 	assert.NotNil(t, user, "We were not expecting user with id 123")
 	assert.Nil(t, err, "We were not expecting an error wit user id 123")
