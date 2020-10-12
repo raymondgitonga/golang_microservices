@@ -12,7 +12,7 @@ var (
 )
 
 func (u *userService) GetUser(userId int64) (*dormain.User, *utils.AppError) {
-	user, err := dormain.UserDao.GetUser(userId)
+	user, err := dormain.UserDaoInterface.GetUser(userId)
 
 	if err != nil {
 		return nil, err

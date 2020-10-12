@@ -18,11 +18,11 @@ var (
 		123: &User{123, "Raymond", "Gitonga", "raytosh95@gmail.com"},
 	}
 
-	UserDao userDaoInterface
+	UserDaoInterface userDaoInterface
 )
 
 func init() {
-	UserDao = &userDao{}
+	UserDaoInterface = &userDao{}
 }
 
 func (u *userDao) GetUser(userId int64) (*User, *utils.AppError) {
@@ -34,6 +34,6 @@ func (u *userDao) GetUser(userId int64) (*User, *utils.AppError) {
 	return nil, &utils.AppError{
 		Message:    fmt.Sprintf("User %v not found", userId),
 		StatusCode: http.StatusNotFound,
-		Code:       "Not found",
+		Code:       utils.UserNotFound,
 	}
 }

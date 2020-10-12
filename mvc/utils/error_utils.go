@@ -5,3 +5,7 @@ type AppError struct {
 	StatusCode int    `json:"status_code"`
 	Code       string `json:"code"`
 }
+
+var (
+	UserNotFound = "user not found"
+)
